@@ -1,1 +1,6 @@
+# base
 Django~=4.0.5
+
+# devel
+django-extensions
+django-debug-toolbar
