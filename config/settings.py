@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # core apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party apps
     'django_extensions',
     'debug_toolbar',
 
-    'fishare.hello.apps'
+    # own apps
+    'fishare.hello.apps.HelloConfig',   # fishare.hello,
+    'fishare.files.apps.FilesConfig'    # fishare.files
 ]
 
 MIDDLEWARE = [
