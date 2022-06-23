@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # own apps
-    'fishare.hello.apps.HelloConfig',   # fishare.hello,
-    'fishare.files.apps.FilesConfig'    # fishare.files
+    # 'fishare.hello.apps.HelloConfig',
+    # 'fishare.files.apps.FilesConfig',
+    'fishare.files',
+    'fishare.hello',
 ]
 
 MIDDLEWARE = [
