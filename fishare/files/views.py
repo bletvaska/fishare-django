@@ -25,4 +25,5 @@ def download_file(request, slug: str):
 
 
 def homepage(request):
-    return HttpResponse('Welcome to Fishare Mega Supa Service.')
+    return render(request, 'homepage.html')
+
