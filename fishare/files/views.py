@@ -25,5 +25,9 @@ def download_file(request, slug: str):
 
 
 def homepage(request):
-    return render(request, 'homepage.html')
 
+    context = {
+        "something": "this is bjutifuľ.",
+        "files": File.objects.all(),
+    }
+    return render(request, 'homepage.html', context)

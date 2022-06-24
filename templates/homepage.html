@@ -8,8 +8,28 @@
 <h1>Welcome to the Here</h1>
 
 <p>
+    a tuto sme daco vlozili: "{{ something | upper }}"
+</p>
+<p>
   Tak toto je mega supa stranka mocna.
 </p>
+
+<p>zoznam suborov je tu nizsie:</p>
+
+<table>
+    <tr>
+        <th>filename</th>
+        <th>size</th>
+        <th>download</th>
+    </tr>
+{% for file in files %}
+<tr>
+    <td>{{ file.filename }}</td>
+    <td>{{ file.size }}</td>
+    <td><a href="{{ file.get_absolute_url }}">Download</a></td>
+</tr>
+{% endfor %}
+</table>
 
 <img src="https://www.landinfotech.com/wp-content/uploads/2020/08/django-logo-negative.png" height="200px"/>
 </body>
