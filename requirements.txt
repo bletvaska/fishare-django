@@ -1,3 +1,5 @@
+# pip install -r requirements.txt
+
 # base
 Django~=4.0.5
 
