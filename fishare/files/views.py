@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.shortcuts import render, get_object_or_404
 
 from fishare.files.models import File
@@ -18,14 +18,10 @@ def download_file(request, slug: str):
     file.save()
 
     # prepare response
-    response = HttpResponse(file.file, content_type=file.mime_type)
-    response['Content-Disposition'] = f'attachment; filename={file.filename}'
-
-    return response
+    return FileResponse(file.file, as_attachment=True, filename=file.filename)
 
 
 def homepage(request):
-
     context = {
         "something": "this is bjutifuľ.",
         "files": File.objects.all(),
