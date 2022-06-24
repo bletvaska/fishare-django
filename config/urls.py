@@ -19,5 +19,6 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
-    path('hello/', include('fishare.hello.urls'))
+    path('hello/', include('fishare.hello.urls')),
+    path('files/', include('fishare.files.urls'))
 ]

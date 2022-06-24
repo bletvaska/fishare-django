@@ -5,15 +5,15 @@ from django.conf import settings
 from django.db import models
 
 
-def slugify(length=7):
-    return ''.join(choices(string.ascii_letters + string.digits, k=length))
+def slugify():
+    return ''.join(choices(string.ascii_letters + string.digits, k=settings.SLUG_LENGTH))
 
 
 # Create your models here.
 # python manage.py makemigrations
 # python manage.py migrate
 class File(models.Model):
-    slug = models.CharField(default=slugify, max_length=7, unique=True, null=None, editable=False)
+    slug = models.CharField(default=slugify, max_length=settings.SLUG_LENGTH, unique=True, null=None, editable=False)
     filename = models.CharField(max_length=128, editable=False)
     downloads = models.IntegerField(default=0, editable=False)
     max_downloads = models.IntegerField(default=1)
@@ -24,17 +24,14 @@ class File(models.Model):
     file = models.FileField(null=False, )
 
     def save(self, *args, **kwargs):
-        print(args)
-        print(kwargs)
-        # if self.id is None:
+        if self.id is None:
+            # set the metadata based on uploaded file
+            self.filename = self.file.name
+            self.mime_type = self.file.file.content_type
+            self.size = self.file.size
 
-        # set the metadata based on uploaded file
-        self.filename = self.file.name
-        self.mime_type = self.file.file.content_type
-        self.size = self.file.size
-
-        # renaming the file on filesystem
-        self.file.name = self.slug
+            # renaming the file on filesystem
+            self.file.name = self.slug
 
         super().save(args, kwargs)
 

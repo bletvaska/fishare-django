@@ -133,3 +133,5 @@ INTERNAL_IPS = [
 ]
 
 MEDIA_ROOT = BASE_DIR / 'storage'
+
+SLUG_LENGTH = 7
