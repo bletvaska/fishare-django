@@ -1,17 +1,13 @@
-from django.http import HttpResponse, FileResponse
-from django.shortcuts import render, get_object_or_404
+from django.db.models import F
+from django.http import FileResponse
+from django.shortcuts import render
 
 from fishare.files.models import File
 
 
 def download_file(request, slug: str):
-    print(f'>> downloading file {slug}')
-    # file = get_object_or_404(File, slug=slug)
-    # TODO rozsirit podmienku na kontrolu vyrazu downloads < max_downloads
-    file = File.objects.get(slug=slug)
-
-    if file.downloads >= file.max_downloads:
-        return HttpResponse('Max downloads reached!', status=404)
+    # SELECT * FROM file where downloads < max_downloads AND slug='xxxx';
+    file = File.objects.filter(downloads__lt=F('max_downloads')).get(slug=slug)
 
     # update downloads
     file.downloads += 1
