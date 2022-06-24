@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from fishare import files
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
     path('hello/', include('fishare.hello.urls')),
-    path('files/', include('fishare.files.urls'))
+    path('', include('fishare.files.urls')),
+    # path('<str:slug>', files.views.download_file, name='download_file')
 ]
