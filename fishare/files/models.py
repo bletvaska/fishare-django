@@ -3,6 +3,7 @@ from random import choices
 
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 
 def slugify():
@@ -45,3 +46,6 @@ class File(models.Model):
 
     def __str__(self):
         return f'{self.filename}'
+
+    def get_absolute_url(self):
+        return reverse('files:download_file', kwargs={'slug': self.slug})

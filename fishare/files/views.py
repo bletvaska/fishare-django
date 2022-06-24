@@ -11,7 +11,7 @@ def download_file(request, slug: str):
     file = File.objects.get(slug=slug)
 
     if file.downloads >= file.max_downloads:
-        return HttpResponse(status=404)
+        return HttpResponse('Max downloads reached!', status=404)
 
     # update downloads
     file.downloads += 1

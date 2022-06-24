@@ -1,6 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
+from django.utils.html import format_html
+
 from fishare.files.models import File
 
 
@@ -8,7 +10,7 @@ from fishare.files.models import File
 
 @admin.register(File)
 class FileAdmin(admin.ModelAdmin):
-    list_display = ['filename', 'mime_type', 'format_filesize', 'get_downloads', 'created_at']
+    list_display = ['filename', 'mime_type', 'format_filesize', 'get_downloads', 'created_at', 'download_link']
     ordering = ['-created_at']
     list_filter = ['mime_type']
     search_fields = ['filename']
@@ -29,3 +31,8 @@ class FileAdmin(admin.ModelAdmin):
         return f"{size:.1f}Yi{suffix}"
 
     format_filesize.short_description = 'Size'
+
+    def download_link(self, file: File):
+        return format_html(f'<a href="{file.get_absolute_url()}">{file.slug}</a>')
+
+    download_link.short_description = 'Download'
