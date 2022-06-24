@@ -9,5 +9,10 @@ urlpatterns = [
         '<str:slug>',
         views.download_file,
         name='download_file'
+    ),
+    path(
+        '',
+        views.homepage,
+        name='homepage'
     )
 ]

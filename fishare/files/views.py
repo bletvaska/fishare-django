@@ -22,3 +22,7 @@ def download_file(request, slug: str):
     response['Content-Disposition'] = f'attachment; filename={file.filename}'
 
     return response
+
+
+def homepage(request):
+    return HttpResponse('Welcome to Fishare Mega Supa Service.')
