@@ -32,3 +32,5 @@ def homepage(request):
 
 class FileUploadView(CreateView):
     model = File
+    fields = ['file']
+    # template_name = 'own_template.html'
