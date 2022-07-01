@@ -2,7 +2,7 @@ from django.db.models import F
 from django.http import FileResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from fishare.files.models import File
 
@@ -36,3 +36,8 @@ class FileUploadView(CreateView):
     fields = ['file']
     success_url = '/'  # reverse('files:homepage')
     # template_name = 'own_template.html'
+
+
+class FilesListView(ListView):
+    model = File
+    # queryset = File.objects.all()
