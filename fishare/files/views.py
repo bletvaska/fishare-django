@@ -40,4 +40,4 @@ class FileUploadView(CreateView):
 
 class FilesListView(ListView):
     model = File
-    # queryset = File.objects.all()
+    queryset = qs = File.objects.filter(downloads__lt=F('max_downloads'))
