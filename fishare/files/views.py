@@ -1,11 +1,21 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views.generic import CreateView, ListView
 
 from fishare.files.models import File
+
+
+def delete_outdated_files(request):
+    # SELECT * FROM file WHERE downloads < max_downloads;
+    qs = File.objects.filter(downloads__gte=F('max_downloads'))
+    files = len(qs)
+    for file in qs:
+        file.delete()
+
+    return HttpResponse(f'{files} had been removed.')
 
 
 def download_file(request, slug: str):

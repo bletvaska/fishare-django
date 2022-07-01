@@ -13,4 +13,5 @@ urlpatterns = [
     path('dummy/', views.homepage, name='dummy'),
     path('', views.FileUploadView.as_view(), name='homepage'),
     path('files/', views.FilesListView.as_view(), name='list'),
+    path('cron/', views.delete_outdated_files, name='cron')
 ]
