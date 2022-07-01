@@ -12,8 +12,9 @@ def delete_outdated_files(request):
     # SELECT * FROM file WHERE downloads < max_downloads;
     qs = File.objects.filter(downloads__gte=F('max_downloads'))
     files = len(qs)
-    for file in qs:
-        file.delete()
+
+    # DELETE FROM file WHERE downloads < max_downloads;
+    qs.delete()
 
     return HttpResponse(f'{files} had been removed.')
 
