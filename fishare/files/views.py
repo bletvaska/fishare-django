@@ -1,6 +1,7 @@
 from django.db.models import F
 from django.http import FileResponse
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import CreateView
 
 from fishare.files.models import File
 
@@ -22,9 +23,12 @@ def download_file(request, slug: str):
 
 
 def homepage(request):
-    print('homepage')
     context = {
         "something": "this is bjutifuľ.",
         "files": File.objects.all(),
     }
     return render(request, 'homepage.html', context)
+
+
+class FileUploadView(CreateView):
+    model = File
