@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
 from django.http import FileResponse
 from django.shortcuts import render, get_object_or_404
@@ -38,6 +39,6 @@ class FileUploadView(CreateView):
     # template_name = 'own_template.html'
 
 
-class FilesListView(ListView):
+class FilesListView(LoginRequiredMixin, ListView):
     model = File
-    queryset = qs = File.objects.filter(downloads__lt=F('max_downloads'))
+    queryset = File.objects.filter(downloads__lt=F('max_downloads'))
