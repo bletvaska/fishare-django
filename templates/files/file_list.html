@@ -15,7 +15,11 @@
 
     {% for file in file_list %}
     <tr>
-        <td>{{ file.filename }}</td>
+        <td>
+            <a href="{{ file.get_absolute_url }}">
+            {{ file.filename }}
+            </a>
+        </td>
         <td>{{ file.get_formatted_filesize }}</td>
         <td>{{ file.downloads }}/{{ file.max_downloads}}</td>
         <td>{{ file.updated_at }}</td>
