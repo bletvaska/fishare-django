@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # 'fishare.files.apps.FilesConfig',
     'fishare.files',
     'fishare.hello',
+    'fishare.error_handlers'
 ]
 
 MIDDLEWARE = [
