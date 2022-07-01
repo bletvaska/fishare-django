@@ -24,4 +24,5 @@ urlpatterns = [
     path('hello/', include('fishare.hello.urls')),
     path('', include('fishare.files.urls')),
     # path('<str:slug>', files.views.download_file, name='download_file')
+    path('', include('fishare.error_handlers.urls')),
 ]
