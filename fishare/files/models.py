@@ -49,3 +49,15 @@ class File(models.Model):
 
     def get_absolute_url(self):
         return reverse('files:download_file', kwargs={'slug': self.slug})
+
+    def get_formatted_filesize(self, suffix="B"):
+        size = 0
+        if self.size:
+            size = self.size
+        for unit in ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"]:
+            if abs(size) < 1024.0:
+                return f"{size:3.1f}{unit}{suffix}"
+            size /= 1024.0
+        return f"{size:.1f}Yi{suffix}"
+
+    get_formatted_filesize.short_description = 'Size'

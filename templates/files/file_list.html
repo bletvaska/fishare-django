@@ -8,11 +8,17 @@
 <table class="table table-dark table-striped table-hover">
     <tr>
         <th>filename</th>
+        <th>size</th>
+        <th>downloads</th>
+        <th>last update</th>
     </tr>
 
     {% for file in file_list %}
     <tr>
         <td>{{ file.filename }}</td>
+        <td>{{ file.get_formatted_filesize }}</td>
+        <td>{{ file.downloads }}/{{ file.max_downloads}}</td>
+        <td>{{ file.updated_at }}</td>
     </tr>
     {% endfor %}
 </table>
