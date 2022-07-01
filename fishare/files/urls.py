@@ -10,6 +10,6 @@ urlpatterns = [
         views.download_file,
         name='download_file'
     ),
-    path('', views.homepage, name='homepage'),
-    path('upload/', views.FileUploadView.as_view(), name='upload'),
+    path('dummy/', views.homepage, name='dummy'),
+    path('', views.FileUploadView.as_view(), name='homepage'),
 ]

@@ -3,14 +3,14 @@
 {% block title %}File: Upload{% endblock title %}
 
 {% block content %}
-<h1><a href="{% url 'files:upload' %}">fishare</a></h1>
+<h1><a href="{% url 'files:homepage' %}">fishare</a></h1>
 
 <div id="upload-form">
     <form method="post" class="text-form" enctype="multipart/form-data">
         {% csrf_token %}
         <input id="{{ form.file.id_for_label }}"
                class="form-control form-control-lg"
-               name="{{ form.file.name}}"
+               name="{{ form.file.name }}"
                type="file"
                required>
         <button type="submit" class="btn btn-lg btn-primary">Upload</button>
