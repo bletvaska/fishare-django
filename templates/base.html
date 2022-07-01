@@ -20,12 +20,7 @@
 <section class="hero">
     <div class="hero-inner">
 
-        <div id="toolbar">
-            <a href="{% url 'files:homepage' %}"><i class="bi bi-house"></i></a>
-            <a href="{% url 'admin:login' %}"><i class="bi bi-gear"></i></a>
-            <a href="run_cron_job"><i class="bi bi-alarm"></i></a>&nbsp;
-            <a href="/docs"><i class="bi bi-nut"></i></a>
-        </div>
+        {% include "toolbar.html" %}
 
         <div id="infobar">
             Košice (SK) 13°C
