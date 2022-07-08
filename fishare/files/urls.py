@@ -2,7 +2,7 @@ from django.urls import path
 
 from fishare.files import views
 
-from fishare.files.api.views import FileListAPIView
+from fishare.files.api.viewsets import FileViewSet
 
 app_name = 'files'
 
@@ -18,4 +18,5 @@ urlpatterns = [
     path('cron/', views.delete_outdated_files, name='cron'),
 
     # path('api/files/', FileListAPIView.as_view(), name='list')
+    path('api/files/', FileViewSet.as_view({'get': 'list', 'post': 'create'}), name='viewset')
 ]
