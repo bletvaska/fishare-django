@@ -12,7 +12,7 @@ class FileSerializer(ModelSerializer):
 class FileHyperlinkedSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = File
-        fields = ['url', 'filename', 'size', ]
+        fields = ['url', 'filename', 'size', 'file' ]
         extra_kwargs = {
             'url': {
                 'view_name': 'files:api-single',

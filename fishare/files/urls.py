@@ -20,8 +20,10 @@ urlpatterns = [
 
     # path('api/files/', FileListAPIView.as_view(), name='list')
     path('api/files/', FileViewSet.as_view({'get': 'list', 'post': 'create'}), name='api-collection'),
-    path('api/files/<str:slug>', FileViewSet.as_view({'get': 'retrieve'}), name='api-single'),
-    # path('api/files/<str:slug>', FileDetailView.as_view(), name='file-detail'),
-
-
+    path('api/files/<str:slug>', FileViewSet.as_view({
+        'get': 'retrieve',
+        'delete': 'destroy',
+        'put': 'update',
+        'patch': 'partial_update'
+    }), name='api-single'),
 ]
