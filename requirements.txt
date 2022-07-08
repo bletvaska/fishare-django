@@ -5,6 +5,7 @@ Django==4.0.6
 djangorestframework==3.13.1
 markdown==3.3.7
 django-filter==22.1
+djangorestframework-yaml==2.0.0
 
 # devel
 django-extensions
