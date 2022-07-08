@@ -147,3 +147,8 @@ SLUG_LENGTH = 7
 
 LOGIN_REDIRECT_URL = "files:homepage"
 LOGOUT_REDIRECT_URL = "files:homepage"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 4
+}
