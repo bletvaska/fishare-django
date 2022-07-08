@@ -2,10 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
 from django.http import FileResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
 from django.views.generic import CreateView, ListView
-from rest_framework import serializers
-from rest_framework.generics import ListAPIView
 
 from fishare.files.models import File
 
@@ -55,15 +52,3 @@ class FileUploadView(CreateView):
 class FilesListView(LoginRequiredMixin, ListView):
     model = File
     queryset = File.objects.filter(downloads__lt=F('max_downloads'))
-
-
-class FileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = File
-        fields = ['filename', 'size', 'mime_type', 'slug']
-
-
-class FileListAPIView(ListAPIView):
-    queryset = File.objects.all()
-    serializer_class = FileSerializer
-    # queryset = File.objects.filter(downloads__lt=F('max_downloads'))

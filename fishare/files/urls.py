@@ -1,6 +1,7 @@
 from django.urls import path
 
 from fishare.files import views
+from fishare.files.api.views import FileListAPIView
 
 app_name = 'files'
 
@@ -15,5 +16,5 @@ urlpatterns = [
     path('files/', views.FilesListView.as_view(), name='list-files'),
     path('cron/', views.delete_outdated_files, name='cron'),
 
-    path('api/files/', views.FileListAPIView.as_view(), name='list')
+    path('api/files/', FileListAPIView.as_view(), name='list')
 ]
