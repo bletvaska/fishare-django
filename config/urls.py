@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 from fishare import files
+from fishare.files.api.views import FileDetailView
+from fishare.files.api.viewsets import FileViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
