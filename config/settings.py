@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # third party apps
     'django_extensions',
     'debug_toolbar',
+    'rest_framework',
 
     # own apps
     # 'fishare.hello.apps.HelloConfig',

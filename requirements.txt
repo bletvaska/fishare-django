@@ -1,7 +1,10 @@
 # pip install -r requirements.txt
 
 # base
-Django~=4.0.5
+Django==4.0.6
+djangorestframework==3.13.1
+markdown==3.3.7
+django-filter==22.1
 
 # devel
 django-extensions
@@ -9,3 +12,4 @@ django-debug-toolbar
 litecli
 ipython
 httpie
+jq

@@ -4,6 +4,7 @@ from django.http import FileResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views.generic import CreateView, ListView
+from rest_framework.generics import ListAPIView
 
 from fishare.files.models import File
 
@@ -53,3 +54,8 @@ class FileUploadView(CreateView):
 class FilesListView(LoginRequiredMixin, ListView):
     model = File
     queryset = File.objects.filter(downloads__lt=F('max_downloads'))
+
+
+class FilesListAPIView(ListAPIView):
+    queryset = File.objects.all()
+    # queryset = File.objects.filter(downloads__lt=F('max_downloads'))

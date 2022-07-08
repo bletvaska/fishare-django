@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+
     path('hello/', include('fishare.hello.urls')),
     path('', include('fishare.files.urls')),
     # path('<str:slug>', files.views.download_file, name='download_file')
