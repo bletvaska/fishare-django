@@ -42,7 +42,7 @@ class File(models.Model):
         path.unlink(missing_ok=True)
 
         # delete from db
-        super().delete(args, kwargs)
+        super().delete(*args, **kwargs)
 
     def __str__(self):
         return f'{self.filename}'
