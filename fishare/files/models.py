@@ -34,7 +34,7 @@ class File(models.Model):
             # renaming the file on filesystem
             self.file.name = self.slug
 
-        super().save(args, kwargs)
+        super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         # delete from filesystem first
